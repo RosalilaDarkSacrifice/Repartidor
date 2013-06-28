@@ -1,53 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="10" height="10" tilewidth="90" tileheight="90">
- <tileset firstgid="1" name="SokoChuy" tilewidth="90" tileheight="90">
-  <image source="gfx/tile.png" width="270" height="270"/>
+ <tileset firstgid="1" name="SokoChuy" tilewidth="90" tileheight="90" spacing="2" margin="1">
+  <image source="gfx/tile.png" width="368" height="368"/>
   <tile id="0">
    <properties>
-    <property name="type" value="triangle a"/>
-   </properties>
-  </tile>
-  <tile id="1">
-   <properties>
-    <property name="type" value="triangle b"/>
+    <property name="type" value="square"/>
    </properties>
   </tile>
   <tile id="2">
    <properties>
-    <property name="type" value="circle"/>
+    <property name="type" value="square"/>
    </properties>
   </tile>
   <tile id="3">
    <properties>
-    <property name="type" value="triangle c"/>
+    <property name="type" value="square"/>
    </properties>
   </tile>
-  <tile id="4">
+  <tile id="6">
+   <properties>
+    <property name="type" value="square"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="type" value="square"/>
+   </properties>
+  </tile>
+  <tile id="8">
    <properties>
     <property name="type" value="triangle d"/>
    </properties>
   </tile>
-  <tile id="5">
+  <tile id="9">
+   <properties>
+    <property name="type" value="triangle c"/>
+   </properties>
+  </tile>
+  <tile id="10">
    <properties>
     <property name="type" value="square"/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="type" value="square"/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="type" value="triangle b"/>
+   </properties>
+  </tile>
+  <tile id="13">
+   <properties>
+    <property name="type" value="triangle a"/>
    </properties>
   </tile>
  </tileset>
  <layer name="Ground" width="10" height="10">
   <properties>
-   <property name="text" value="Area 7"/>
+   <property name="text" value="Nyuuuu"/>
   </properties>
-  <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA2NnYGDgBGJ2IOaA0jA2JxIfJsaGAyOrh4lh04uuDlkNGx516G5jJ6AO3Sx0/7ExoPoTmzpkOXS/ItuLjc1JgjpkDAB9b8W0kAEAAA==
+  <data encoding="base64" compression="zlib">
+   eJx9jdsKwCAMQ6vd3NX9/+caoUIIzoeDNdocN7MUHOCMuVDeyWAHN3jACy7KB2OvxtusS7M+e5xbZB4z92c5Z94/h7oSuYrc1bvy6y73sb8u+j761wAynwF+
   </data>
  </layer>
  <objectgroup name="Objects" width="10" height="10">
-  <object name="Box" x="379" y="366" width="50" height="70"/>
-  <object name="Point" x="463" y="178" width="66" height="90"/>
-  <object name="Chuy" x="358" y="540" width="86" height="86"/>
-  <object name="Box" x="277" y="275" width="50" height="70"/>
-  <object name="Box" x="466" y="458" width="50" height="70"/>
-  <object name="Point" x="269" y="265" width="66" height="90"/>
-  <object name="Point" x="270" y="360" width="66" height="90"/>
+  <object name="point" x="359" y="357" width="90" height="90"/>
+  <object name="start" x="270" y="180" width="90" height="90"/>
+  <object name="point" x="0" y="90" width="90" height="90"/>
+  <object name="point" x="89" y="628" width="90" height="90"/>
+  <object name="point" x="723" y="358" width="90" height="90"/>
  </objectgroup>
 </map>

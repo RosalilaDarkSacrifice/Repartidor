@@ -1,53 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="10" height="10" tilewidth="90" tileheight="90">
- <tileset firstgid="1" name="SokoChuy" tilewidth="90" tileheight="90">
-  <image source="gfx/tile.png" width="270" height="270"/>
+<map version="1.0" orientation="orthogonal" width="12" height="12" tilewidth="90" tileheight="90">
+ <tileset firstgid="1" name="SokoChuy" tilewidth="90" tileheight="90" spacing="2" margin="1">
+  <image source="gfx/tile.png" width="368" height="368"/>
   <tile id="0">
-   <properties>
-    <property name="type" value="triangle a"/>
-   </properties>
-  </tile>
-  <tile id="1">
-   <properties>
-    <property name="type" value="triangle b"/>
-   </properties>
-  </tile>
-  <tile id="2">
-   <properties>
-    <property name="type" value="circle"/>
-   </properties>
-  </tile>
-  <tile id="3">
-   <properties>
-    <property name="type" value="triangle c"/>
-   </properties>
-  </tile>
-  <tile id="4">
-   <properties>
-    <property name="type" value="triangle d"/>
-   </properties>
-  </tile>
-  <tile id="5">
    <properties>
     <property name="type" value="square"/>
    </properties>
   </tile>
+  <tile id="2">
+   <properties>
+    <property name="type" value="square"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="type" value="square"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="type" value="square"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="type" value="square"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="type" value="triangle d"/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="type" value="triangle c"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="type" value="square"/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="type" value="square"/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="type" value="triangle b"/>
+   </properties>
+  </tile>
+  <tile id="13">
+   <properties>
+    <property name="type" value="triangle a"/>
+   </properties>
+  </tile>
  </tileset>
- <layer name="Ground" width="10" height="10">
+ <layer name="Ground" width="12" height="12">
   <properties>
-   <property name="text" value="Area 6"/>
+   <property name="text" value="Nyuuuu"/>
   </properties>
-  <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA2NnYGDghGIOLJgdikHybHgwO5I5bDjMgomjq2ND08OG5iZ85uFSR6x5uNjI7sKGkcMHPazY0cRJwQAjV6D/kAEAAA==
+  <data encoding="base64" compression="zlib">
+   eJydkd0KgDAIRrXc+l3v/7gZOJAvJ9TFQVHRw8ZExB+ZXb4oq+V1MD8pRdmVQzmVzdU7DHuazWS7sVfN74nifIXePsXl6BL5jG5Gvf5GAvMCEX0yL7wtQS3yasn+68f/e27ogwGq
   </data>
  </layer>
- <objectgroup name="Objects" width="10" height="10">
-  <object name="Box" x="463" y="372" width="50" height="70"/>
-  <object name="Point" x="197" y="268" width="66" height="90"/>
-  <object name="Chuy" x="538" y="371" width="86" height="86"/>
-  <object name="Box" x="465" y="459" width="50" height="70"/>
-  <object name="Point" x="198" y="364" width="66" height="90"/>
-  <object name="Box" x="206" y="374" width="50" height="70"/>
-  <object name="Point" x="548" y="273" width="66" height="90"/>
+ <objectgroup name="Objects" width="12" height="12">
+  <object name="point" x="453" y="453" width="90" height="90"/>
+  <object name="start" x="358" y="262" width="90" height="90"/>
+  <object name="point" x="88" y="184" width="90" height="90"/>
+  <object name="point" x="179" y="722" width="90" height="90"/>
+  <object name="point" x="815" y="446" width="90" height="90"/>
  </objectgroup>
 </map>

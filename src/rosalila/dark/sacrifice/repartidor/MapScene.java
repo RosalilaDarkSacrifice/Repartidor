@@ -134,8 +134,12 @@ public class MapScene extends Scene implements IOnSceneTouchListener,IOnAreaTouc
 	{
 		BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/");
 		
-		this.mChuyTextureAtlas = new BitmapTextureAtlas(Global.texture_manager, 258, 344, TextureOptions.DEFAULT);
-		this.mChuyTextureRegion = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(this.mChuyTextureAtlas, Global.main_activity, "patche.png", 0, 0, 3, 4);
+//		this.mChuyTextureAtlas = new BitmapTextureAtlas(Global.texture_manager, 258, 344, TextureOptions.DEFAULT);
+//		this.mChuyTextureRegion = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(this.mChuyTextureAtlas, Global.main_activity, "patche.png", 0, 0, 3, 4);
+//		this.mChuyTextureAtlas.load();
+		
+		this.mChuyTextureAtlas = new BitmapTextureAtlas(Global.texture_manager, 180, 180, TextureOptions.DEFAULT);
+		this.mChuyTextureRegion = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(this.mChuyTextureAtlas, Global.main_activity, "carrito.png", 0, 0, 2, 2);
 		this.mChuyTextureAtlas.load();
 		
 		this.mBoxTextureAtlas = new BitmapTextureAtlas(Global.texture_manager, 100, 70, TextureOptions.DEFAULT);
@@ -150,8 +154,8 @@ public class MapScene extends Scene implements IOnSceneTouchListener,IOnAreaTouc
 		this.mBottleTextureRegion = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(mBottleTextureAtlas, Global.main_activity, "bottle.png", 0, 0, 2, 1);
 		this.mBottleTextureAtlas.load();
 		
-		this.mPointTextureAtlas = new BitmapTextureAtlas(Global.texture_manager, 66, 100, TextureOptions.DEFAULT);
-		this.mPointTextureRegion = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(mPointTextureAtlas, Global.main_activity, "bookshelf.png", 0, 0, 1, 1);
+		this.mPointTextureAtlas = new BitmapTextureAtlas(Global.texture_manager, 180, 90, TextureOptions.DEFAULT);
+		this.mPointTextureRegion = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(mPointTextureAtlas, Global.main_activity, "point.png", 0, 0, 2, 1);
 		this.mPointTextureAtlas.load();
 		
 		BitmapTextureAtlas mCompletedTextureAtlas = new BitmapTextureAtlas(Global.texture_manager, 720, 480, TextureOptions.BILINEAR);
@@ -178,7 +182,7 @@ public class MapScene extends Scene implements IOnSceneTouchListener,IOnAreaTouc
 				@Override
 				public void onTMXTileWithPropertiesCreated(final TMXTiledMap pTMXTiledMap, final TMXLayer pTMXLayer, final TMXTile pTMXTile, final TMXProperties<TMXTileProperty> pTMXTileProperties) {
 					/* We are going to count the tiles that have the property "cactus=true" set. */
-					int wall_separation = 30;
+					int wall_separation = 0;
 					final Rectangle rect = new Rectangle(pTMXTile.getTileX()+wall_separation/2,pTMXTile.getTileY()+wall_separation/2,
 														pTMXTile.getTileWidth()-wall_separation,pTMXTile.getTileHeight()-wall_separation,
 														Global.vertex_buffer_object_manager);
@@ -195,12 +199,19 @@ public class MapScene extends Scene implements IOnSceneTouchListener,IOnAreaTouc
 				        rect.setVisible(false);
 				        getChildByIndex(0).attachChild(rect);
 					}
+
+//					final float halfWidth = ((rect.getWidthScaled()-2) * 0.5f) / PIXEL_TO_METER_RATIO_DEFAULT;
+//					final float halfHeight = ((rect.getHeightScaled()-2) * 0.5f) / PIXEL_TO_METER_RATIO_DEFAULT;
+					
+					final float halfWidth = (rect.getWidthScaled() * 0.5f) / PIXEL_TO_METER_RATIO_DEFAULT;
+					final float halfHeight = (rect.getHeightScaled() * 0.5f) / PIXEL_TO_METER_RATIO_DEFAULT;
+					
+//					final float quarterWidth = ((rect.getWidthScaled()-2) * 0.25f) / PIXEL_TO_METER_RATIO_DEFAULT;
+//					final float quarterHeight = ((rect.getHeightScaled()-2) * 0.25f) / PIXEL_TO_METER_RATIO_DEFAULT;
 					
 					if(pTMXTileProperties.containsTMXProperty("type", "triangle a"))
 					{
 						/* Remember that the vertices are relative to the center-coordinates of the Shape. */
-						final float halfWidth = ((rect.getWidthScaled()-2) * 0.5f) / PIXEL_TO_METER_RATIO_DEFAULT;
-						final float halfHeight = ((rect.getHeightScaled()-2) * 0.5f) / PIXEL_TO_METER_RATIO_DEFAULT;
 	
 						final float top = -halfHeight;
 						final float bottom = halfHeight;
@@ -208,9 +219,9 @@ public class MapScene extends Scene implements IOnSceneTouchListener,IOnAreaTouc
 						final float right = halfWidth;
 	
 						final Vector2[] vertices = {
-								new Vector2(right, top),
+								new Vector2(right, top*0),
 								new Vector2(right, bottom),
-								new Vector2(left, bottom)
+								new Vector2(left*0, bottom)
 						};
 				        final FixtureDef boxFixtureDef = PhysicsFactory.createFixtureDef(0, 0, 1f);
 				        PhysicsFactory.createPolygonBody(mPhysicsWorld, rect,vertices, BodyType.StaticBody, boxFixtureDef);
@@ -221,8 +232,6 @@ public class MapScene extends Scene implements IOnSceneTouchListener,IOnAreaTouc
 					if(pTMXTileProperties.containsTMXProperty("type", "triangle b"))
 					{
 						/* Remember that the vertices are relative to the center-coordinates of the Shape. */
-						final float halfWidth = ((rect.getWidthScaled()-2) * 0.5f) / PIXEL_TO_METER_RATIO_DEFAULT;
-						final float halfHeight = ((rect.getHeightScaled()-2) * 0.5f) / PIXEL_TO_METER_RATIO_DEFAULT;
 	
 						final float top = -halfHeight;
 						final float bottom = halfHeight;
@@ -230,8 +239,8 @@ public class MapScene extends Scene implements IOnSceneTouchListener,IOnAreaTouc
 						final float right = halfWidth;
 	
 						final Vector2[] vertices = {
-								new Vector2(left, top),
-								new Vector2(right, bottom),
+								new Vector2(left, top*0),
+								new Vector2(right*0, bottom),
 								new Vector2(left, bottom)
 						};
 				        final FixtureDef boxFixtureDef = PhysicsFactory.createFixtureDef(0, 0, 1f);
@@ -243,8 +252,6 @@ public class MapScene extends Scene implements IOnSceneTouchListener,IOnAreaTouc
 					if(pTMXTileProperties.containsTMXProperty("type", "triangle c"))
 					{
 						/* Remember that the vertices are relative to the center-coordinates of the Shape. */
-						final float halfWidth = ((rect.getWidthScaled()-2) * 0.5f) / PIXEL_TO_METER_RATIO_DEFAULT;
-						final float halfHeight = ((rect.getHeightScaled()-2) * 0.5f) / PIXEL_TO_METER_RATIO_DEFAULT;
 	
 						final float top = -halfHeight;
 						final float bottom = halfHeight;
@@ -253,8 +260,8 @@ public class MapScene extends Scene implements IOnSceneTouchListener,IOnAreaTouc
 	
 						final Vector2[] vertices = {
 								new Vector2(right, top),
-								new Vector2(right, bottom),
-								new Vector2(left, top)
+								new Vector2(right, bottom*0),
+								new Vector2(left*0, top)
 						};
 				        final FixtureDef boxFixtureDef = PhysicsFactory.createFixtureDef(0, 0, 1f);
 				        PhysicsFactory.createPolygonBody(mPhysicsWorld, rect,vertices, BodyType.StaticBody, boxFixtureDef);
@@ -265,8 +272,6 @@ public class MapScene extends Scene implements IOnSceneTouchListener,IOnAreaTouc
 					if(pTMXTileProperties.containsTMXProperty("type", "triangle d"))
 					{
 						/* Remember that the vertices are relative to the center-coordinates of the Shape. */
-						final float halfWidth = ((rect.getWidthScaled()-2) * 0.5f) / PIXEL_TO_METER_RATIO_DEFAULT;
-						final float halfHeight = ((rect.getHeightScaled()-2) * 0.5f) / PIXEL_TO_METER_RATIO_DEFAULT;
 	
 						final float top = -halfHeight;
 						final float bottom = halfHeight;
@@ -274,8 +279,8 @@ public class MapScene extends Scene implements IOnSceneTouchListener,IOnAreaTouc
 						final float right = halfWidth;
 	
 						final Vector2[] vertices = {
-								new Vector2(right, top),
-								new Vector2(left, bottom),
+								new Vector2(right*0, top),
+								new Vector2(left, bottom*0),
 								new Vector2(left, top)
 						};
 				        final FixtureDef boxFixtureDef = PhysicsFactory.createFixtureDef(0, 0, 1f);
@@ -328,11 +333,11 @@ public class MapScene extends Scene implements IOnSceneTouchListener,IOnAreaTouc
 			{
 				addBottle(object.getX(),object.getY());
 			}
-			if(object.getName().equals("Chuy"))
+			if(object.getName().equals("start"))
 			{
-				addChuy(object.getX(),object.getY());
+				addChuy(object.getX()+15,object.getY()+15);
 			}
-			if(object.getName().equals("Point"))
+			if(object.getName().equals("point"))
 			{
 				addPoint(object.getX(),object.getY());
 			}
@@ -466,52 +471,23 @@ public class MapScene extends Scene implements IOnSceneTouchListener,IOnAreaTouc
 	{
 		boolean game_over=true;
 		
-		ArrayList<Box>boxes_temp=new ArrayList<Box>();
-		for(int i=0;i<boxes.size();i++)
-		{
-			boxes_temp.add(boxes.get(i));
-		}
-		
-		ArrayList<Point>points_temp=new ArrayList<Point>();
 		for(int i=0;i<points.size();i++)
 		{
-			points_temp.add(points.get(i));
-			if(points.get(i).box!=null)
+			if(points.get(i).collidesWith(chuy))
 			{
-				if(points.get(i).box.collidesWith(points.get(i)))
-				{
-					boxes_temp.remove(points.get(i).box);
-					points_temp.remove(points.get(i));
-				}
+				points.get(i).complete();
 			}
 		}
 		
-		for(int i=0;i<points_temp.size();i++)
+		for(int i=0;i<points.size();i++)
 		{
-			Point point=points_temp.get(i);
-			boolean collides=false;
-			for(int j=0;j<boxes_temp.size();j++)
+			if(!points.get(i).isCompleted())
 			{
-				Box box=boxes_temp.get(j);
-				if(point.collidesWith(box))
-				{
-					box.setReady();
-					point.box=box;
-					collides=true;
-					boxes_temp.remove(box);
-					break;
-				}else
-				{
-					point.box=null;
-					box.setNotReady();
-				}
-			}
-			if(!collides)
-			{
-				game_over=false;
+				return false;
 			}
 		}
-		return game_over;
+		
+		return true;
 	}
 
 	@Override

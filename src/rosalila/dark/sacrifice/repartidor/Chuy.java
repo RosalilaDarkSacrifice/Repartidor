@@ -103,12 +103,20 @@ public class Chuy extends AnimatedSprite {
 	public void animate(String orientation)
 	{
 		if(orientation.equals("up"))
-			animate(new long[]{200, 200, 200}, 0, 2, true);
+			this.setCurrentTileIndex(2);
 		if(orientation.equals("down"))
-			animate(new long[]{200, 200, 200}, 3, 5, true);
+			this.setCurrentTileIndex(3);
 		if(orientation.equals("right"))
-			animate(new long[]{200, 200, 200}, 6, 8, true);
+			this.setCurrentTileIndex(0);
 		if(orientation.equals("left"))
-			animate(new long[]{200, 200, 200}, 9, 11, true);
+			this.setCurrentTileIndex(1);
+//		if(orientation.equals("up"))
+//			animate(new long[]{200, 200, 200}, 0, 2, true);
+//		if(orientation.equals("down"))
+//			animate(new long[]{200, 200, 200}, 3, 5, true);
+//		if(orientation.equals("right"))
+//			animate(new long[]{200, 200, 200}, 6, 8, true);
+//		if(orientation.equals("left"))
+//			animate(new long[]{200, 200, 200}, 9, 11, true);
 	}
 }

@@ -97,6 +97,7 @@ public class MainMenuScene extends MenuScene implements IOnMenuItemClickListener
 		
 		//Background
 		bg = new Sprite(0, 0, mBgTextureRegion, (VertexBufferObjectManager) Global.vertex_buffer_object_manager);
+		bg.setVisible(false);
 		this.getChildByIndex(0).attachChild(bg);
 		
 		//Screens
@@ -111,7 +112,7 @@ public class MainMenuScene extends MenuScene implements IOnMenuItemClickListener
 		this.getChildByIndex(2).attachChild(info_bg);
 		
 		//Items
-		Font mFont = FontFactory.create(Global.main_activity.getFontManager(), Global.texture_manager, 256, 256, Typeface.create(Typeface.DEFAULT, Typeface.BOLD), 70,Color.GREEN);
+		Font mFont = FontFactory.create(Global.main_activity.getFontManager(), Global.texture_manager, 256, 256, Typeface.create(Typeface.DEFAULT, Typeface.BOLD), 70,Color.argb(255, 50, 50, 50));
 		mFont.load();
 		
 		for(int i=0;i<Global.AREAS_QUANTITY;i++)
@@ -181,46 +182,49 @@ public class MainMenuScene extends MenuScene implements IOnMenuItemClickListener
             	max_height=0;
             }
         }
-        ending_button.setPosition(450,250);
-        info_button.setPosition(480,250);
-        continue_button.setPosition(480,250);
+        ending_button.setPosition(390,250);
+        info_button.setPosition(470,250);
+        continue_button.setPosition(550,250);
 	};
 
 	@Override
 	public boolean onMenuItemClicked(MenuScene pMenuScene, IMenuItem pMenuItem,
 			float pMenuItemLocalX, float pMenuItemLocalY) {
 		// TODO Auto-generated method stub
-		if(pMenuItem.getID()<=Global.AREAS_QUANTITY && !splash_screen.isVisible())
+		if(pMenuItem.getID()<=Global.AREAS_QUANTITY && bg.isVisible())
 			Global.engine.setScene(new MapScene(pMenuItem.getID()));
-		else if(pMenuItem.getID()==15 && pMenuItem.isVisible())
+		else if(pMenuItem.getID()==15 && pMenuItem.isVisible())//Ending
 		{
 			for(int i=0;i<Global.AREAS_QUANTITY;i++)
 			{
 				IMenuItem mi = mMenuItems.get(i);
 				mi.setVisible(false);
 			}
+			bg.setVisible(false);
 			info_button.setVisible(false);
 			ending_button.setVisible(false);
 			continue_button.setVisible(true);
 			ending_bg.setVisible(true);
-		}else if(pMenuItem.getID()==16 && pMenuItem.isVisible())
+		}else if(pMenuItem.getID()==16 && pMenuItem.isVisible())//Info
 		{
 			for(int i=0;i<Global.AREAS_QUANTITY;i++)
 			{
 				IMenuItem mi = mMenuItems.get(i);
 				mi.setVisible(false);
 			}
+			bg.setVisible(false);
 			info_button.setVisible(false);
 			ending_button.setVisible(false);
 			continue_button.setVisible(true);
 			info_bg.setVisible(true);
-		}else if(pMenuItem.getID()==17 && pMenuItem.isVisible())
+		}else if(pMenuItem.getID()==17 && pMenuItem.isVisible())//Main menu
 		{
 			for(int i=0;i<Global.AREAS_QUANTITY;i++)
 			{
 				IMenuItem mi = mMenuItems.get(i);
 				mi.setVisible(true);
 			}
+			bg.setVisible(true);
 			info_button.setVisible(true);
 			if(gameComplete())
 				ending_button.setVisible(true);
@@ -238,7 +242,7 @@ public class MainMenuScene extends MenuScene implements IOnMenuItemClickListener
         {
     		if(preferences.getBoolean("level "+(i+1)+" completed", false)==false)
     		{ 			
-                return false;
+                return true;
     		}
         }
         return true;
