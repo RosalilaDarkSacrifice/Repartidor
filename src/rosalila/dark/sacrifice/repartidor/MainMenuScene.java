@@ -148,7 +148,7 @@ public class MainMenuScene extends MenuScene implements IOnMenuItemClickListener
 	{
 		super.buildAnimations();
 
-        float offset_x=50,offset_y=10;
+        float offset_x=50,offset_y=100;
         float current_x=0,current_y=0;
         float max_x=Global.SCREEN_WIDTH;
         float max_height=0;
@@ -242,7 +242,7 @@ public class MainMenuScene extends MenuScene implements IOnMenuItemClickListener
         {
     		if(preferences.getBoolean("level "+(i+1)+" completed", false)==false)
     		{ 			
-                return true;
+                return false;
     		}
         }
         return true;
